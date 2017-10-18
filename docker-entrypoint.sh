@@ -2,7 +2,7 @@
 
 # Run command via uid of current user ($FLAG owner)
 root=$PWD
-FLAG=$root/nodejs.yml
+FLAG=$root/Makefile
 
 # Create user if none
 if [[ "$APPUSER" ]]; then
