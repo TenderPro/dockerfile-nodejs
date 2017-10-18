@@ -36,5 +36,6 @@ COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 WORKDIR /home/app
+VOLUME /home/app
 
 ENV APPUSER op
