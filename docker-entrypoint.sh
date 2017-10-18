@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# strict mode http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
+
 # Run command via uid of current user ($FLAG owner)
 root=$PWD
 FLAG=$root/Makefile
@@ -10,13 +14,14 @@ if [[ "$APPUSER" ]]; then
 fi
 
 # Change user id to FLAG owner's uid
-FLAG_UID=$(stat -c "%u" $FLAG)
+FLAG_UID=$(stat -c '%u' $FLAG)
 if [[ "$FLAG_UID" ]] && [[ $FLAG_UID != $(id -u $APPUSER) ]]; then
   if [[ "$FLAG_UID" != "0" ]] ; then
     echo "Set uid $FLAG_UID for user $APPUSER"
     usermod -u $FLAG_UID $APPUSER
   fi
-  chown -R $APPUSER /home/op
+  echo "chown $APPUSER /home/op/"
+  chown -R $APPUSER /home/app
 fi
 
 export PATH=/usr/lib/node_modules/.bin:$PATH
