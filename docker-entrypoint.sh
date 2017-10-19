@@ -20,7 +20,7 @@ if [[ "$FLAG_UID" ]] && [[ $FLAG_UID != $(id -u $APPUSER) ]]; then
     echo "Set uid $FLAG_UID for user $APPUSER"
     usermod -u $FLAG_UID $APPUSER
   fi
-  echo "chown $APPUSER /home/op/"
+  echo "chown $APPUSER /home/app/"
   chown -R $APPUSER /home/app
 fi
 
