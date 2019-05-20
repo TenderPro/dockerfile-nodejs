@@ -27,6 +27,7 @@ COPY package.json /home/op
 RUN cd /home/op \
   && chown op /usr/lib/node_modules \
   && ln -s /usr/lib/node_modules node_modules \
+  && npm install --save-dev @babel/preset-env \
   && npm install --only=dev
 
 # -------------------------------------------------------------------------------
