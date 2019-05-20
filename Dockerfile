@@ -1,17 +1,17 @@
-FROM debian:jessie
+FROM debian:stretch
 
 MAINTAINER Alexey Kovrizhkin <lekovr+tpro@gmail.com>
 
-ENV DOCKERFILE_VERSION  171017
+ENV DOCKERFILE_VERSION  190520
 
-ENV GOSU_VER=1.10
+ENV GOSU_VER=1.11
 
 RUN apt-get update && apt-get install -y \
     curl sudo \
  && arch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
  && curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VER}/gosu-$arch" \
  && chmod +x /usr/local/bin/gosu \
- && curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
+ && curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash - \
  && apt-get install -y nodejs bzip2 libfontconfig1 \
  && rm -rf /var/lib/apt/lists/*
 
